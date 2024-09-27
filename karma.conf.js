@@ -17,18 +17,38 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      dir: require('path').join(_dirname, './coverage'),
+      reports: [ 'html', 'lcovonly', 'cobertura'],
       fixWebpackSourcePaths: true
     },
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'mocha', 'junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false
-  });
+    junitReporter: {
+      outputDir: ' ',
+        outputFile: undefined,
+        suite: ' ',
+        useBrowserName: true,
+        nameFormatter: undefined,
+        classNameFormatter: undefined,
+        properties: {}
+   }, 
+  autoWatch: true,
+  singleRun: false,
+  browsers: ['ChromeHeadlessNoSandbox'],
+
+  customLaunches: {
+  ChromeHeadlessNoSandbox: {
+    base: 'ChromeHeadless',
+      flags: ['--no-sandbox']
+  }
+},
+});
 };
