@@ -7,8 +7,8 @@
     "start": "ng serve",
     "open": "ng serve -o",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
+    "test": "ng test angular-sample-app --code-coverage --no-watch",
+    "lint": "tslint --project tslint.json",
     "e2e": "ng e2e"
   },
   "private": true,
